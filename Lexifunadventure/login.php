@@ -55,7 +55,8 @@ if (mysqli_num_rows($result) > 0 ) {
     
     // Login successful
     header("location: C:/xampp/htdocs/Sigin/index.php"); //changes
-else{
+}
+else {
     // Login failed
     $username = "";
     $password = "";
