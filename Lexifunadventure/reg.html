@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- <script src="script1.js"></script> -->
+</head>
+<body>
+<section class="container">
+    <div class="login-container">
+        <div class="circle circle-one"></div>
+        <div class="form-container">
+            <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+            <h1 class="opacity">REGISTER</h1>
+            <form id="registrationForm"  method="POST" onsubmit="return validateForm()">
+                <input type="text" placeholder="USERNAME" name="username" id="username" />
+                <span class="error" id="usernameErr"></span>
+                <input type="email" placeholder="EMAIL" name="email" id="email" />
+                <span class="error" id="emailErr"></span>
+                <input type="text" placeholder="NUMBER" name="number" id="number" />
+                <span class="error" id="numberErr"></span>
+                <input type="password" placeholder="PASSWORD" name="password" id="password" />
+                <span class="error" id="passwordErr"></span>
+                <button type="submit" class="opacity">SUBMIT</button>
+            </form>
+            <div class="register-forget opacity">
+                <a href="login.html">Already have an account? Login Now</a>
+                <a href="forgetpassword.html">FORGOT PASSWORD</a>
+            </div>
+        </div>
+        <div class="circle circle-two"></div>
+    </div>
+</section>
+
+</body>
+<script>
+    function validateForm() {
+        // e.preventDefault();
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var number = document.getElementById("number").value;
+    var password = document.getElementById("password").value;
+    var isValid = true;
+    console.log("Hello");
+    // Reset error messages
+    document.getElementById("usernameErr").innerHTML = "";
+    document.getElementById("emailErr").innerHTML = "";
+    document.getElementById("numberErr").innerHTML = "";
+    document.getElementById("passwordErr").innerHTML = "";
+    // alert("debaakbnndajsbd");
+    // Validate username
+    if (username.trim() === "") {
+        alert("Username is required");
+        isValid = false;
+    }
+
+    // Validate email
+    if (email.trim() === "") {
+        alert("Email is required");
+        isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+        alert("Invalid email format");
+        isValid = false;
+    }
+
+    // Validate number
+    if (number.trim() === "") {
+        alert("Mobile number is required");
+        isValid = false;
+    } else if (!/^\d{10,10}$/.test(number)) {
+        alert("Mobile number must be between 10 and 13 digits");
+        isValid = false;
+    }
+
+    // Validate password
+
+    let special_ch = 0;
+    let digit = 0;
+    let up = 0;
+    let low = 0;
+
+
+
+    if (password.trim() === "") {
+        alert("Password is required");
+        isValid = false;
+    } 
+
+    for(let i = 0; i < password.length; ++i)
+    {
+        if(password[i] >= '0' && password[i] <= '9')
+            digit += 1;
+        else if(password[i] >= 'a' && password[i] <= 'z')
+            low += 1;
+        else if(password[i] >= 'A' && password[i] <= 'Z')
+            up += 1;
+        else 
+            special_ch += 1;
+    }
+
+    if(password.length < 8 || password.length >= 16 || special_ch == 0 || digit == 0 || up == 0 || low == 0)
+    {
+        isValid = false;
+        alert("Me yeda aahe....");
+    }
+        
+    else 
+        isValid = true;
+
+    // else if (!(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(password))) {
+    //     alert(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(password));
+    //     alert("Prem");
+    //     alert("Password must contain at least one lowercase letter, one uppercase letter, one digit, and be 8-16 characters long");
+    //     isValid = false;
+    // }
+    
+
+    return isValid;
+}
+
+</script>
+</html>

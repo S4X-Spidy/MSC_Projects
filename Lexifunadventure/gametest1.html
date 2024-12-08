@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url('background.png'); /* Replace  with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 815px;
+            backdrop-filter: blur(5px);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5); /* Adjust the alpha (last value) to control the blur intensity */
+            backdrop-filter: blur(2px); /* Adjust the blur radius as needed */
+            z-index: 2;
+        }
+
+
+        .container {
+            position: relative;
+        }
+
+        .keypad {
+            width: 700px;
+            border: 2px solid black;
+            top: 80px;
+            border-radius: 30px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 400px;
+            z-index: 3; /* Ensure keypad is above the blur layer */
+        }
+        
+        .main {
+        display: flex;
+        background-color: orange;
+        top: 60px;
+        padding: 20px;
+        margin: 10px;
+        height: 50px;
+        width: 680px;
+        position: relative;
+        justify-content: center;
+        left: 400px;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bolder;
+    }
+
+    
+
+    .button {
+        display: flex;
+
+        background-color: #0aed7f;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 50%;
+    }
+
+    .button a {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 135%;
+        position: relative;
+    }
+
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+
+    
+    .parent1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+        
+
+    }
+    
+    .flex {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .btn {
+        position: relative;
+        top: 100px;
+        left: 400px;
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 24px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: sans-serif;
+        box-sizing: border-box;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 400%;
+        border-radius: 30px;
+        z-index: 1;
+    }
+    h1 {
+    text-align: center; /* Align the text in the center */
+    font-weight: bold; /* Make the text bold */
+}
+
+
+    .btn:hover {
+        animation: animate 8s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            background-position: 0%;
+        }
+
+        100% {
+            background-position: 400%;
+        }
+    }
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        bottom: -5px;
+        left: -5px;
+        z-index: -1;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 400%;
+        border-radius: 40px;
+        opacity: 0;
+        transition: .5s;
+    }
+
+    .btn:hover:before {
+        filter: blur(20px);
+        opacity: 1;
+        animation: animate 8s linear infinite;
+    }
+    .surrounding-blur {
+    filter: blur(8px); /* Adjust the blur intensity as needed */
+}
+  
+.level-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 10px;
+    top: 33%;
+    right: 300px;
+    transform: translateY(-50%);
+}
+
+.level-button {
+    position: relative;
+    margin:15px;
+    top: 100px;
+        left: 150px;
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 24px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: sans-serif;
+        box-sizing: border-box;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 400%;
+        border-radius: 30px;
+        z-index: 1;
+}
+
+.level-button:hover {
+        animation: animate 8s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            background-position: 0%;
+        }
+
+        100% {
+            background-position: 400%;
+        }
+    }
+
+    .level-button:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        bottom: -5px;
+        left: -5px;
+        z-index: -1;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 400%;
+        border-radius: 40px;
+        opacity: 0;
+        transition: .5s;
+    }
+
+    .level-button:hover:before {
+        filter: blur(20px);
+        opacity: 1;
+        animation: animate 8s linear infinite;
+    }
+    #result, #score {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        #score {
+            top: 60px; /* Adjust the spacing between result and score */
+        }
+         .restart-button {
+            position: fixed;
+            top: 430px;
+            /* right: 500px; */
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 33%;
+        }
+
+        .restart-icon {
+            width: 30px;
+            height: 30px;
+            fill: #333;
+        }
+
+        .restart-button:hover {
+            background-color: #eee;
+        }
+        
+
+        .modal-content {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .modal-header {
+            background-color: #343a40;
+            color: #ffffff;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
+
+        .modal-footer .btn {
+            border-radius: 20px;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black backdrop */
+        }
+
+        /* Customize input field style */
+        .modal-body input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Optional: Add animation to modals */
+        .modal.fade .modal-dialog {
+            -webkit-transition: transform 0.3s ease-out;
+            -moz-transition: transform 0.3s ease-out;
+            -o-transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal.in .modal-dialog {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+
+        .game{
+            display: inline-block;
+        }
+
+</style>
+</head>
+
+<body>
+    <h1>Spell & Repeat</h1>
+    <div id="main" class="main"></div>
+    <div class="game">
+        <div class="keypad">
+        <div>
+            <button onclick="sound1.play(); show('a');" id="a" class="button" style="top: 50px; left: 55px;">A</button>
+            <button onclick="sound2.play(); show('b');" id="b" class="button" style="top: 50px; left: 110px;">B</button>
+            <button onclick="sound3.play(); show('c');" id="c" class="button" style="top: 50px; left: 165px;">C</button>
+            <button onclick="sound4.play(); show('d');" id="d" class="button" style="top: 50px; left: 220px;">D</button>
+            <button onclick="sound5.play(); show('e');" id="e" class="button" style="top: 50px; left: 275px;">E</button>
+            <button onclick="sound6.play(); show('f');" id="f" class="button" style="top: 50px; left: 330px;">F</button>
+            <button onclick="sound7.play(); show('g');" id="g" class="button" style="top: 50px; left: 385px;">G</button>
+            <button onclick="sound8.play(); show('h');" id="h" class="button" style="top: 50px; left: 440px;">H</button>
+        </div>
+        <div>
+            <button onclick="sound9.play(); show('i');" id="i" class="button" style="top: 50px; left: 495px;">I</button>
+            <button onclick="sound10.play(); show('j');" id="j" class="button"
+                style="top: 50px; left: 550px;">J</button>
+            <button onclick="sound11.play(); show('k');" id="k" class="button"
+                style="top: 50px; left: 605px;">K</button>
+            <button onclick="sound12.play(); show('l');" id="l" class="button"
+                style="top: 50px; left: 660px;">L</button>
+            <button onclick="sound13.play(); show('m');" id="m" class="button"
+                style="top: 50px; left: 715px;">M</button>
+            <button onclick="sound14.play(); show('n');" id="n" class="button"
+                style="top: 110px; left: 165px;">N</button>
+            <button onclick="sound15.play(); show('o');" id="o" class="button"
+                style="top: 110px; left: 220px;">O</button>
+        </div>
+        <div>
+            <button onclick="sound16.play(); show('p');" id="p" class="button"
+                style="top: 110px; left: 275px;">P</button>
+            <button onclick="sound17.play(); show('q');" id="q" class="button"
+                style="top: 110px; left: 330px;">Q</button>
+            <button onclick="sound18.play(); show('r');" id="r" class="button"
+                style="top: 110px; left: 385px;">R</button>
+            <button onclick="sound19.play(); show('s');" id="s" class="button"
+                style="top: 110px; left: 440px;">S</button>
+            <button onclick="sound20.play(); show('t');" id="t" class="button"
+                style="top: 110px; left: 495px;">T</button>
+            <button onclick="sound21.play(); show('u');" id="u" class="button"
+                style="top: 110px; left: 550px;">U</button>
+            </div>
+            <div>
+            <button onclick="sound22.play(); show('v');" id="v" class="button"
+                style="top: 110px; left: 605px;">V</button>
+        
+            <button onclick="sound23.play(); show('w');" id="w" class="button"
+                style="top: 170px; left: 330px;">W</button>
+            <button onclick="sound24.play(); show('x');" id="x" class="button"
+                style="top: 170px; left: 385px;">X</button>
+
+            <button onclick="sound25.play(); show('y');" id="y" class="button"
+                style="top: 170px; left: 440px;">Y</button>
+            <button onclick="sound26.play(); show('z');" id="z" class="button"
+                style="top: 230px; left: 385px;">Z</button>
+          
+        </div>
+        <div class="restart-button" onclick="restartGame()">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                <path fill="#7cb342" d="M24 3A21 21 0 1 0 24 45A21 21 0 1 0 24 3Z"></path><path fill="#dcedc8" d="M24,36.1c-6.6,0-12-5.4-12-12c0-3.6,1.6-7,4.4-9.3l2.5,3.1c-1.8,1.5-2.9,3.8-2.9,6.2c0,4.4,3.6,8,8,8 s8-3.6,8-8c0-2.1-0.8-4-2.2-5.5l2.9-2.7C34.8,18,36,21,36,24.1C36,30.7,30.6,36.1,24,36.1z"></path><path fill="#dcedc8" d="M12 13L21 13 21 22z"></path>
+            </svg>
+        </div>
+        
+    </div>
+
+    <div class="level-buttons">
+        <button class="level-button">Easy</button>
+        <button class="level-button">Medium</button>
+        <button class="level-button">Hard</button>
+    </div>
+
+    
+
+    <div class="flex">
+        <div class="parent1">
+            <a onclick="startSpeaking()" class="btn" id="Start">Start</a>
+        </div>
+        <div class="parent1">
+            <a onclick="handleSubmit()" class="btn" id="Submit">Submit</a>
+        </div>
+
+        <div class="parent1">
+            <a onclick="backspace()" class="btn" id="Back">Back</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+    
+
+    <div class="alert alert-danger" id="result" >
+        <strong></strong> 
+      </div>
+    <div id="score"></div>
+
+    <div id="nameModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Enter Your Name</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="playerName" placeholder="Enter your name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="saveName">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="incorrectWordModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Incorrect Word</h4>
+            </div>
+            <div class="modal-body">
+                <p>Oops! The word is incorrect.</p>
+                <!-- You can add additional instructions or messages here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+
+    <script>
+         $(document).ready(function () {
+            // Show the name input popup when the page loads
+            $('#nameModal').modal('show');
+
+            // Save the player's name
+            $('#saveName').click(function () {
+                var playerName = $('#playerName').val();
+                // Do something with the player's name, e.g., store it in a variable or localStorage
+                console.log('Player name:', playerName);
+                $('#nameModal').modal('hide');
+            });
+        });
+        // Your audio objects here
+        var sound1 = new Audio();
+        sound1.src = "phonics/A.wav";
+        var sound2 = new Audio();
+        sound2.src = "phonics/B.wav";
+        var sound3 = new Audio();
+        sound3.src = "phonics/C.wav";
+        var sound4 = new Audio();
+        sound4.src = "phonics/D.wav";
+        var sound5 = new Audio();
+        sound5.src = "phonics/E.wav";
+        var sound6 = new Audio();
+        sound6.src = "phonics/F.wav";
+        var sound7 = new Audio();
+        sound7.src = "phonics/G.wav";
+        var sound8 = new Audio();
+        sound8.src = "phonics/H.wav";
+        var sound9 = new Audio();
+        sound9.src = "phonics/I.wav";
+        var sound10 = new Audio();
+        sound10.src = "phonics/J.wav";
+        var sound11 = new Audio();
+        sound11.src = "phonics/K.wav";
+        var sound12 = new Audio();
+        sound12.src = "phonics/L.wav";
+        var sound13 = new Audio();
+        sound13.src = "phonics/M.wav";
+        var sound14 = new Audio();
+        sound14.src = "phonics/N.wav";
+        var sound15 = new Audio();
+        sound15.src = "phonics/O.wav";
+        var sound16 = new Audio();
+        sound16.src = "phonics/P.wav";
+        var sound17 = new Audio();
+        sound17.src = "phonics/Q.wav";
+        var sound18 = new Audio();
+        sound18.src = "phonics/R.wav";
+        var sound19 = new Audio();
+        sound19.src = "phonics/S.wav";
+        var sound20 = new Audio();
+        sound20.src = "phonics/T.wav";
+        var sound21 = new Audio();
+        sound21.src = "phonics/U.wav";
+        var sound22 = new Audio();
+        sound22.src = "phonics/V.wav";
+        var sound23 = new Audio();
+        sound23.src = "phonics/W.wav";
+        var sound24 = new Audio();
+        sound24.src = "phonics/X.wav";
+        var sound25 = new Audio();
+        sound25.src = "phonics/Y.wav";
+        var sound26 = new Audio();
+        sound26.src = "phonics/Z.wav";
+
+        // itha aapn toh word store krtoy main div madhla
+        let currentWord = '';
+
+        // itha aapn toh word show pn krtoy ani tya current word madhe update krtoy
+        function show(id){
+            let letter = document.getElementById(id).innerText;
+            currentWord += letter;
+            document.getElementById("main").innerText = currentWord;
+        }
+
+        // Array ghetla words ch joh ki Global array of random words
+        const wordsArray = ["apple", "banana", "orange", "grape", "melon"];
+        let index = 0;
+        let score = 0;
+
+        // words bolat ahe hya function madhe
+        function speakWord() {
+            if (index < wordsArray.length) {
+                const word = new SpeechSynthesisUtterance(wordsArray[index]);
+                window.speechSynthesis.speak(word);
+            }
+        }
+
+        // hya function madhe word check krtoy tya current word sobat jyat store kela ahe 
+        function checkWord() {
+            if (currentWord.toLowerCase() === wordsArray[index]) {
+                score++;
+                index++;
+                currentWord = ''; 
+                speakWord(); 
+            } else {
+                document.getElementById("result").innerText = `Word is Incorrect. Your score is: ${score}`;
+                $('#incorrectWordModal').modal('show');
+            }
+            document.getElementById("main").innerText = ''; 
+        }
+
+        // hya function madhe prt words bolayla start krel
+        function startSpeaking() {
+            speakWord();
+            setInterval(speakWord, 50000);
+        }
+
+        // Function to handle word submission
+        function handleSubmit() {
+            window.speechSynthesis.cancel(); 
+            checkWord(); 
+            document.getElementById("score").innerText = "Score: " + score; 
+        }
+
+        function backspace() {
+            currentWord = currentWord.slice(0, -1); 
+            document.getElementById("main").innerText = currentWord; 
+        }
+
+        function restartGame() {
+            window.location.reload();
+        }
+
+        
+
+
+        // hya function madhe aapn easy level sathi words accept krtoy
+        document.querySelector('.level-button:nth-child(1)').addEventListener('click', function() {
+            const easyWords = ["cat", "dog", "bird"]; 
+            wordsArray.splice(0); 
+            wordsArray.push(...easyWords); 
+            resetGame(); 
+        });
+
+       // hya function madhe aapn medium level sathi words accept krtoy
+        document.querySelector('.level-button:nth-child(2)').addEventListener('click', function() {
+            const mediumWords = ["elephant", "tiger", "lion"]; 
+            wordsArray.splice(0); 
+            wordsArray.push(...mediumWords); 
+            resetGame(); 
+        });
+
+        // hya function madhe aapn difficult level sathi words accept krtoy
+        document.querySelector('.level-button:nth-child(3)').addEventListener('click', function() {
+            const hardWords = ["hippopotamus", "rhinoceros", "crocodile"]; 
+            wordsArray.splice(0); 
+            wordsArray.push(...hardWords); 
+            resetGame();
+        });
+
+        // itha aapn game reset krtoy like scores ani result jewa jewa easy medium hard button click hotil
+        function resetGame() {
+            index = 0; 
+            score = 0; 
+            currentWord = ''; 
+            document.getElementById("main").innerText = ''; 
+            document.getElementById("score").innerText = ''; 
+            document.getElementById("result").innerText = ''; 
+        }
+        
+   
+
+</script>
+</body>
+
+</html>
