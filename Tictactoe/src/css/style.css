@@ -1,0 +1,11 @@
+.button-group {
+    display: flex;
+    justify-content:stretch;/* Adjust as needed */
+  }
+  
+  .button-group button {
+    margin-right: 5px; /* Adjust spacing between buttons */
+  }
+
+ 
+  

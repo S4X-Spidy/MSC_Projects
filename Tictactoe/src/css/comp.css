@@ -1,0 +1,68 @@
+:root {
+	--board-background: none;
+	--border-color: #f6546a;
+	--border-thickness: 5px;
+}
+body{
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--board-background);
+}
+.board{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 306px;
+    width: 310px;
+    background-color: var(--board-background);
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    /* border: var(--border-thickness) dashed
+    var(--border-color);
+    background-color: var(--board-background); */
+    /* width: 30vw;
+	height: 50%;
+	background-color: var(--board-background);
+	display: flex;
+	align-items: flex-start;
+	flex-direction: row;
+	flex-wrap: wrap; */
+}
+
+.row{
+    background-color: var(--board-background);
+    
+    /* display:flex;
+    height: 300px;
+    width: 300px;
+    justify-content: space-between;
+
+    border: var(--border-thickness) dashed
+    var(--border-color); */
+}
+
+.mycol{
+    height: 100px;
+    width: 100px;
+    
+    /* background-color: var(--board-background); */
+    border: var(--border-thickness) dashed
+    var(--border-color);
+}
+
+.cell{
+    height: 100%;
+    width: 100%;
+    font-family: "Bellefair", serif;
+	font-style: italic;
+	font-weight: 700;
+	font-size: 2rem;
+    /* border: var(--border-thickness) dashed
+    var(--border-color);  */
+    background-color: var(--board-background);
+    
+}
